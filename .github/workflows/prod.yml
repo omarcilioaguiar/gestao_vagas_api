@@ -37,7 +37,7 @@ jobs:
           run: docker pull omarcilioaguiar/gestao_vagas:latest
         
         - name: Remove container
-          run: docker rm -f gestao-vagas
+          run: docker rm -f gestao-vagas || true
 
-        - name: Run container container gestao_vagas
-          run: docker run -d -p 8080:8080 -e DATABASE_URL=${{secrets.DATABASE_URL}} -e DATABASE_PASSWORD='${{secrets.DATABASE_PASSWORD}}' -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} --name gestao-vagas omarcilioaguiar/gestao_vagas
+        - name: Run container gestao_vagas
+          run: docker run -d -p 8080:8080 -e DATABASE_URL=${{secrets.DATABASE_URL}} -e DATABASE_PASSWORD='${{secrets.DATABASE_PASSWORD}}' -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} --name gestao-vagas omarcilioaguiar/gestao_vagas:latest
